@@ -15,10 +15,13 @@ public class UserInterface {
         System.out.println("Введите одну или несколько ссылок в формате Markdown, разделяя их пробелом:");
         System.out.println("Например: [Google](https://google.com) [YouTube](https://youtube.com)");
         System.out.println("Чтобы завершить выполнение программы, введите 0");
+        System.out.println("Чтобы вывести все ссылки из коллекции, введите 1");
 
         while (true) {
             String str = reader.nextLine().trim();
             if (str.equals("0")) break;
+
+            if (str.equals("1")) showAllFromCollection();
 
             if (str.isEmpty()) continue;
 
@@ -40,6 +43,13 @@ public class UserInterface {
 
         reader.close();
     }
+
+    public static void showAllFromCollection() {
+        for (Links link : collection) {
+            System.out.println(link.get_value());
+        }
+    }
+
 
     public static void run() {
         printInfo();
