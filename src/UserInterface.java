@@ -21,7 +21,11 @@ public class UserInterface {
             String str = reader.nextLine().trim();
             if (str.equals("0")) break;
 
-            if (str.equals("1")) showAllFromCollection();
+            if (str.equals("1")) {
+                showAllFromCollection();
+                System.out.println("\nВведите следующую ссылку, 1 для вывода всех ссылок или 0 для выхода:");
+                continue;
+            }
 
             if (str.isEmpty()) continue;
 
@@ -38,7 +42,7 @@ public class UserInterface {
                 System.out.println("Результат в HTML: " + html);
             }
 
-            System.out.println("\nВведите следующую ссылку или 0 для выхода:");
+            System.out.println("\nВведите следующую ссылку, 1 для вывода всех ссылок или 0 для выхода:");
         }
 
         reader.close();
