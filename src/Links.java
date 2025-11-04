@@ -52,4 +52,8 @@ public class Links {
                 .replace("<", "&lt;")
                 .replace(">", "&gt;");
     }
+
+    public String get_value() { return _value; }
+
+    public void set_value(String _value) { this._value = _value; }
 }
