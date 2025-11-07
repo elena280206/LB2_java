@@ -1,13 +1,17 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Links {
     private String _value;
-
+    private boolean _isValid;
     private static final Pattern LINK_PATTERN = Pattern.compile("^\\[([^\\]]+)]\\(([^)]+)\\)$");
 
+    public static List<Links> collection = new ArrayList<>();
+
     public Links() {
-        _value = "[Google](https://google.com)";
+        _value = "";
     }
 
     public Links(String str) {
@@ -17,11 +21,12 @@ public class Links {
     /**
      * Проверяет, что введённая строка полностью соответствует формату Markdown-ссылки.
      */
-    public static boolean isValidInput(String input) {
+    public boolean isValidInput(String input) {
         if (input == null || input.trim().isEmpty()) {
             return false;
         }
         Matcher mLink = LINK_PATTERN.matcher(input.trim());
+        set_isValid(mLink.matches());
         return mLink.matches();
     }
 
@@ -55,5 +60,15 @@ public class Links {
 
     public String get_value() { return _value; }
 
-    public void set_value(String _value) { this._value = _value; }
+    public void set_value(String _value) {
+        if (isValidInput(_value)) {this._value = _value;}
+    }
+
+    public boolean get_isValid() {
+        return _isValid;
+    }
+
+    public void set_isValid(boolean _isValid) {
+        this._isValid = _isValid;
+    }
 }

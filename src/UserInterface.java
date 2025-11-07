@@ -1,9 +1,6 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class UserInterface {
-    private static List<Links> collection = new ArrayList<>();
 
     public static void printInfo() {
         System.out.println("Лабораторная работа №2. Выполнили студенты группы 24ВП1 Шадчина Е. С., Коноплева Н. Д.");
@@ -32,12 +29,13 @@ public class UserInterface {
             String[] parts = str.split("\\s+");
 
             for (String part : parts) {
-                if (!Links.isValidInput(part)) {
+                Links link = new Links(part);
+
+                if (!link.isValidInput(part)) {
                     System.out.println("Неправильный формат ввода: " + part);
                     continue;
                 }
-                Links link = new Links(part);
-                collection.add(link);
+                Links.collection.add(link);
                 String html = Links.MarkdownToHTML(part);
                 System.out.println("Результат в HTML: " + html);
             }
@@ -49,7 +47,7 @@ public class UserInterface {
     }
 
     public static void showAllFromCollection() {
-        for (Links link : collection) {
+        for (Links link : Links.collection) {
             System.out.println(link.get_value());
         }
     }
