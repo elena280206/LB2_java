@@ -48,7 +48,7 @@ public class UserInterface {
 
     public static void showAllFromCollection() {
         for (Links link : Links.collection) {
-            System.out.println(link.get_value());
+            System.out.println(link.get_value() + " " + link.get_isValid());
         }
     }
 
